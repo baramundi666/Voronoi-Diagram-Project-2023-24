@@ -1,22 +1,19 @@
-Król Mateusz 
-Zieliński Filip 
+Król Mateusz
 ## Algorytmy geometryczne 2023/24
 # Dokumentacja projektu wieloboki Voronoi
 ## Spis treści
 1. [Część techniczna](#tech)
 2. [Część użytkownika](#user)
 3. [Sprawozdanie](#report)
-3.1 [Algorytm Bowyera-Watsona](#bowyer)
-3.1 [Wykonane testy](#tests)
-3.1 [Wnioski](#wnio)
+    1. [Algorytm Bowyera-Watsona](#bowyer)
+    2. [Wykonane testy](#tests)
+    3. [Wnioski](#wnio)
 
 &nbsp;
 &nbsp;
 # 1. Część techniczna <a name="tech"></a>
 Program składa się z następujących modułów:
-- importowane biblioteki
-    1. ***numpy***
-    2. ***bitalg.visualizer.main***
+- narzędzie graficzne BITu w folderze ***visualizer***
 - funkcje umożliwiające wizualizacje
     1. ***draw_tri***
     2. ***draw_voronoi***
@@ -35,11 +32,10 @@ Program składa się z następujących modułów:
 - algorytmy
     1. ***Bowyer-Watson algorithm***
 - wizualizacja działania algorytmów
-- testy do zaimplementowanych algorytmów
 
 Wymagania techniczne:
 - zainstalowana biblioteka ***NumPy***
-- zainstalowana biblioteka do wizualizacji ***bitalg***
+
 &nbsp;
 &nbsp;
 # 2. Część użytkownika <a name="user"></a>
@@ -91,7 +87,7 @@ Zaimplementowana wersja algorytmu *Bowyera-Watsona* za każdym razem arytmetyczn
 &nbsp;
 
 ##### Dane bibliograficzne:
-https://en.wikipedia.org/wiki/Voronoi_diagram
-https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
-https://github.com/aghbit/Algorytmy-Geometryczne
-https://www.baeldung.com/cs/voronoi-diagram
+- https://en.wikipedia.org/wiki/Voronoi_diagram
+- https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
+- https://github.com/aghbit/Algorytmy-Geometryczne
+- https://www.baeldung.com/cs/voronoi-diagram
