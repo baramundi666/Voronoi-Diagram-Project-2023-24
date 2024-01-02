@@ -6,9 +6,13 @@ Zieliński Filip
 1. [Część techniczna](#tech)
 2. [Część użytkownika](#user)
 3. [Sprawozdanie](#report)
+3.1 [Algorytm Bowyera-Watsona](#bowyer)
+3.1 [Wykonane testy](#tests)
+3.1 [Wnioski](#wnio)
 
-
-# Część techniczna <a name="tech"></a>
+&nbsp;
+&nbsp;
+# 1. Część techniczna <a name="tech"></a>
 Program składa się z następujących modułów:
 - importowane biblioteki
     1. ***numpy***
@@ -36,19 +40,24 @@ Program składa się z następujących modułów:
 Wymagania techniczne:
 - zainstalowana biblioteka ***NumPy***
 - zainstalowana biblioteka do wizualizacji ***bitalg***
-
-# Część użytkownika <a name="user"></a>
-Wszystkie moduły opisane powyżej oprócz algorytmów znajdują się w pliku ***main.ipynb***, a algorytmy są importowane z pliku ***algorithms.py***.
+&nbsp;
+&nbsp;
+# 2. Część użytkownika <a name="user"></a>
+Większość modułów znajduje się w pliku ***main.ipynb***.
+Algorytmy znajdują sie w pliku ***algorithms.py*** i są importowane do ***main.ipynb***
+Istnieje również plik ***usefull.py***, który służy do wydzielenia funkcji pomocniczych i zaimplementowanych klas.
 
 Funkcje ***draw_tri*** oraz ***draw_voronoi*** służą do wizualizacji odpowiednio triangulacji Delaunaya oraz diagramu Voronoi za pomocą listy obiektów klasy ***Triangle*** składających się na triangulację Delaunaya odpowiadającą diagramowi Voronoi.
 
 Funkcja ***generate_uniform_points*** służy do losowego generowania chmury punktów na płaszczyźnie.
-
-# Sprawozdanie <a name="report"></a>
+&nbsp;
+&nbsp;
+# 3. Sprawozdanie <a name="report"></a>
 
 W ramach projektu zaimplementowaliśmy dwa algorytmy wyznaczające dla chmury punktów w 2D wierzchołki diagramu Voronoi. 
 Umożliwilismy również wizualizację samego diagramu oraz kolejnych kroków algorytmów.
-#### 1. Algorytm Bowyera-Watsona
+&nbsp;
+#### 3.1. Algorytm Bowyera-Watsona <a name="bowyer"></a>
 Algorytm iteracyjny konstruuje triangulację Delaunaya.
 
 Dla każdego nowo-dodanego punktu znajduje trójkąty, których okręgi opisane zawierają ten punkt.
@@ -59,4 +68,30 @@ Na podstawie triangulacji Delaunaya chmury punktów, jesteśmy w stanie wyznaczy
 Graficzne przedstawienie diagramu Voroni polega na połączeniu ze sobą odcinkami środków okręgów sąsiadujących ze sobą trójkątów oraz poprowadzenie dla pozostałych krawędzi półprostych wychodzących z wierzchołka Voronoi i pokrywających symetralną obecnie rozważanej krawędzi.
 
 ![example1](example1.png)
+&nbsp;
 
+#### 3.2. Wykonane testy <a name="tests"></a>
+Przeprowadziłem testy czasowe algorytmu *Bowyera-Watsona* dla różnej ilości losowo generowanych punktów na płaszczyźnie:
+
+| n   | 100  | 500  | 1000 | 1500 | 2000 | 2500 | 3000 | 3500 | 4000 | 4500 | 5000 | 10000 |
+------|------|------|------|------|------|------|------|------|------|------|------|-------|
+| czas [s] | 0.012 | 0.32 | 1.29 | 2.89 | 5.16 | 8.1 | 11.6 | 16.1 | 20.7 | 26.2 | 32.4 | 130   |
+
+
+, gdzie *n* to moc zbioru punktów na płaszczyźnie
+&nbsp;
+
+#### 3.3. Wnioski <a name="wnio"></a>
+
+Algorytm *Bowyera-Watsona* w przedstawionej implementacji posiada złożoność O(*n<sup>2</sup>*). Wynika to z faktu, że dla każdego rozważanego punktu, trójkąty *obecnej* triangulacji są przeszukiwane naiwnie, a więc w zwykłej pętli wykonującej do *n* porównań.
+
+Zaimplementowana wersja algorytmu *Bowyera-Watsona* za każdym razem arytmetycznie sprawdza czy punkt leży wewnątrz odpowiedniego okręgu, co jest zabiegiem niebezpiecznym i nie można zawsze na nim polegać.
+
+&nbsp;
+&nbsp;
+
+##### Dane bibliograficzne:
+https://en.wikipedia.org/wiki/Voronoi_diagram
+https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
+https://github.com/aghbit/Algorytmy-Geometryczne
+https://www.baeldung.com/cs/voronoi-diagram
