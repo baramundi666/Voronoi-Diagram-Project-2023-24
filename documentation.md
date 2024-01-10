@@ -67,11 +67,24 @@ Graficzne przedstawienie diagramu Voroni polega na połączeniu ze sobą odcinka
 &nbsp;
 
 #### 3.2. Wykonane testy <a name="tests"></a>
-Przeprowadziłem testy czasowe algorytmu *Bowyera-Watsona* dla różnej ilości losowo generowanych punktów na płaszczyźnie:
+Przeprowadziłem testy czasowe algorytmu *Bowyera-Watsona* i algorytmu Fortune'a dla różnej ilości losowo generowanych punktów na płaszczyźnie:
 
-| n   | 100  | 500  | 1000 | 1500 | 2000 | 2500 | 3000 | 3500 | 4000 | 4500 | 5000 | 10000 |
-------|------|------|------|------|------|------|------|------|------|------|------|-------|
-| czas [s] | 0.012 | 0.32 | 1.29 | 2.89 | 5.16 | 8.1 | 11.6 | 16.1 | 20.7 | 26.2 | 32.4 | 130   |
+| Liczba Punktów | Czas Bowyer-Watson | Czas Fortune |
+| --------------- | ------------------ | ------------ |
+| 10              | 0.00099778         | 0.03200364   |
+| 50              | 0.03199816         | 0.13499832   |
+| 100             | 0.05299902         | 0.20900416   |
+| 500             | 1.09801841         | 0.91598392   |
+| 1000            | 3.40800023         | 1.92497969   |
+| 1500            | 7.77997637         | 2.99100327   |
+| 2000            | 13.92299891        | 4.09999799   |
+| 2500            | 21.87798142        | 5.63699698   |
+| 3000            | 32.47299290        | 6.35400343   |
+| 3500            | 43.91099811        | 8.97300267   |
+| 4000            | 60.44501853        | 8.69200325   |
+| 4500            | 78.48697853        | 9.77899957   |
+| 5000            | 92.68800616        | 11.12399650  |
+
 
 
 , gdzie *n* to moc zbioru punktów na płaszczyźnie
