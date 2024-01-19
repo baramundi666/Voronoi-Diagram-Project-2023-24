@@ -49,22 +49,6 @@ class Breakpoint:
         return not (i.yd == j.yd and j.xd < i.xd)
 
     def get_intersection(self, l, max_y=None):
-        """
-        Calculate the coordinates of the intersection
-        Modified from https://www.cs.hmc.edu/~mbrubeck/voronoi.html
-
-        Parameters
-        ----------
-        l: float
-            The y-coordinate of the sweep line
-        max_y: float
-            The top of the bounding box/polygon for clipping infinite breakpoints
-
-        Returns
-        --------
-        coordinate: Coordinate
-            The current coordinates of the breakpoint
-        """
 
         # Get the points
         i, j = self.breakpoint
