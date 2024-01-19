@@ -1,13 +1,5 @@
 # parametr epsilon
 eps = 10**-12
-def orient(a, b, c):
-    return (b.x-a.x)*(c.y-b.y) - (b.y-a.y)*(c.x-b.x)
-
-def collinear(x1, y1, x2, y2, x3, y3):
-    a = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)
-    if abs(a)<eps: return True
-    return False
-
 def findCircumCenter(P, Q, R):
     ax = P[0]
     ay = P[1]
@@ -54,6 +46,20 @@ class Point():
         return (self.x, self.y)
     
 class Edge():
+    def __init__(self, PointA, PointB):
+        self.A = PointA
+        self.B = PointB
+
+    def __eq__(self, other):
+        return (self.A==other.A and self.B==other.B) or (self.A==other.B and self.B==other.A)
+    
+    def __hash__(self):
+        return hash(self.A.index+self.B.index)
+    
+    def toCart(self):
+        return ((self.A.x, self.A.y), (self.B.x, self.B.y))
+    
+class HalfLine():
     def __init__(self, PointA, PointB):
         self.A = PointA
         self.B = PointB
