@@ -89,6 +89,7 @@ def Bowyer_Watson(points):
             finalTriangleList.remove(triangle)
 
     # Zwracanie reprezentacji wieloboków Voronoi
+    triangleList = finalTriangleList
     voronoiDiagram = []
     edgeList = {}
 
@@ -121,10 +122,10 @@ def Bowyer_Watson(points):
                     if otherTriangle!=triangle:
                         voronoiDiagram.append(Edge(voronoiPoint, otherTriangle.getCircleCenter()))
             else:
-                middle = Point((edge.A.x+edge.B.x)/2, (edge.A.y+edge.B.y)/2)
-                MV = Point(voronoiPoint[0]-middle[0], voronoiPoint[1]-middle[1])
+                middle = Point(((edge.A.x+edge.B.x)/2, (edge.A.y+edge.B.y)/2),-2)
+                MV = (voronoiPoint.toCart()[0]-middle.toCart()[0], voronoiPoint.toCart()[1]-middle.toCart()[1])
                 if obtuseAngle(triangle, edge):
-                    newPoint = (voronoiPoint[0]+MV[0], voronoiPoint[1]+MV[1])
+                    newPoint = Point((voronoiPoint.toCart()[0]+MV[0], voronoiPoint.toCart()[1]+MV[1]),-2)
                     voronoiDiagram.append(HalfLine(voronoiPoint, newPoint))
                 else:
                     voronoiDiagram.append(HalfLine(voronoiPoint,middle))
