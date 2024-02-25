@@ -53,10 +53,8 @@ Funkcja ***generate_uniform_points*** służy do losowego generowania chmury pun
 &nbsp;
 # 3. Sprawozdanie <a name="report"></a>
 
-W ramach projektu zaimplementowaliśmy dwa algorytmy wyznaczające dla chmury punktów w 2D wierzchołki diagramu Voronoi. 
-Umożliwilismy również wizualizację samego diagramu oraz kolejnych kroków algorytmów.
 &nbsp;
-#### 3.1. Algorytm Bowyera-Watsona <a name="bowyer"></a>
+#### 3.1 Algorytm Bowyera-Watsona <a name="bowyer"></a>
 Algorytm iteracyjny konstruuje triangulację Delaunaya.
 
 Dla każdego nowo-dodanego punktu znajduje trójkąty, których okręgi opisane zawierają ten punkt.
@@ -72,24 +70,11 @@ Graficzne przedstawienie diagramu Voroni polega na odpowiednim wyrysowaniu wszys
 &nbsp;
 
 #### 3.2. Wykonane testy <a name="tests"></a>
-Przeprowadziłem testy czasowe algorytmu *Bowyera-Watsona* i algorytmu Fortune'a dla różnej ilości losowo generowanych punktów na płaszczyźnie:
+Przeprowadziłem testy czasowe algorytmu *Bowyera-Watsona*  dla różnej ilości losowo generowanych punktów na płaszczyźnie:
 
-| Liczba Punktów | Czas Bowyer-Watson | Czas Fortune |
-| --------------- | ------------------ | ------------ |
-| 10              | 0.00099778         | 0.03200364   |
-| 50              | 0.03199816         | 0.13499832   |
-| 100             | 0.05299902         | 0.20900416   |
-| 500             | 1.09801841         | 0.91598392   |
-| 1000            | 3.40800023         | 1.92497969   |
-| 1500            | 7.77997637         | 2.99100327   |
-| 2000            | 13.92299891        | 4.09999799   |
-| 2500            | 21.87798142        | 5.63699698   |
-| 3000            | 32.47299290        | 6.35400343   |
-| 3500            | 43.91099811        | 8.97300267   |
-| 4000            | 60.44501853        | 8.69200325   |
-| 4500            | 78.48697853        | 9.77899957   |
-| 5000            | 92.68800616        | 11.12399650  |
-
+|   n      | 100    | 500    | 1000   | 1500   | 2000   | 2500   | 3000   | 3500   | 4000   | 4500   | 5000   | 10000  |
+| --------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| czas [s]   | 0.02   | 0.41   | 1.6    | 3.6    | 6.4    | 10.1   | 14.5   | 19.8   | 25.6   | 32.7   | 40.3   | 167.4   |
 
 
 , gdzie *n* to moc zbioru punktów na płaszczyźnie
