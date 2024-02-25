@@ -1,4 +1,4 @@
-from usefull import *
+from utils import *
 
 def Bowyer_Watson(points):
     lowerX = points[0][0]
@@ -88,4 +88,48 @@ def Bowyer_Watson(points):
         if triangle.containsPoint(superA) or triangle.containsPoint(superB) or triangle.containsPoint(superC) or triangle.containsPoint(superD):
             finalTriangleList.remove(triangle)
 
-    return finalTriangleList    
+    # Zwracanie reprezentacji wieloboków Voronoi
+    triangleList = finalTriangleList
+    voronoiDiagram = []
+    edgeList = {}
+
+    for triangle in triangleList:
+        a = triangle.a
+        b = triangle.b
+        c = triangle.c
+        edgeAB = Edge(a, b)
+        edgeBC = Edge(b, c)
+        edgeCA = Edge(c, a)
+        for edge in [edgeAB, edgeBC, edgeCA]:
+            if edge in edgeList.keys():
+                edgeList[edge].add(triangle)
+            else:
+                edgeList[edge] = set()
+                edgeList[edge].add(triangle)
+
+    for triangle in triangleList:
+        a = triangle.a
+        b = triangle.b
+        c = triangle.c
+        edgeAB = Edge(a, b)
+        edgeBC = Edge(b, c)
+        edgeCA = Edge(c, a)
+        voronoiPoint = triangle.getCircleCenter()
+        voronoiDiagram.append(voronoiPoint)
+        for edge in [edgeAB, edgeBC, edgeCA]:
+            if len(edgeList[edge])>1:
+                for otherTriangle in edgeList[edge]:
+                    if otherTriangle!=triangle:
+                        voronoiDiagram.append(Edge(voronoiPoint, otherTriangle.getCircleCenter()))
+            else:
+                middle = Point(((edge.A.x+edge.B.x)/2, (edge.A.y+edge.B.y)/2),-2)
+                MV = (voronoiPoint.toCart()[0]-middle.toCart()[0], voronoiPoint.toCart()[1]-middle.toCart()[1])
+                if obtuseAngle(triangle, edge):
+                    newPoint = Point((voronoiPoint.toCart()[0]+MV[0], voronoiPoint.toCart()[1]+MV[1]),-2)
+                    voronoiDiagram.append(HalfLine(voronoiPoint, newPoint))
+                else:
+                    voronoiDiagram.append(HalfLine(voronoiPoint,middle))
+   
+
+
+    return triangleList, voronoiDiagram 
